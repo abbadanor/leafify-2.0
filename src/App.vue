@@ -111,8 +111,9 @@ onMounted(async () => {
         <i-mdi-loading v-if="uploadStatus === 'loading'" class="animate-spin h-16 w-16 text-green-500"></i-mdi-loading>
         <div v-elif="uploadStatus === 'done'" class="flex flex-col items-center">
             <h1 class="font-semibold text-3xl">{{ leaves[prediction.leaf_species].name }}</h1>
+            <p class="text-green-500 text-xl font-semibold">{{prediction.confidence.toFixed(1)}}%</p>
             <p class="text-gray-700">{{ prediction.leaf_species }}</p>
-            <img alt="" :src="leaves[prediction.leaf_species].img" />
+            <img class="rounded-lg" alt="" :src="leaves[prediction.leaf_species].img" />
             <p class="text-gray-700">{{ leaves[prediction.leaf_species].description }}</p>
             <br />
             <p @click="uploadStatus = null; cameraActive = true; openCamera()" class="text-green-500 underline">Gör om</p>
